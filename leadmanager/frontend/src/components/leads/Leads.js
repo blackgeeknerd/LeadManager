@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getLeads, deleteLead } from '../../actions/leads'
+import { getLeads, deleteLead, addLead } from '../../actions/leads'
 
 export class Leads extends Component {
 
@@ -48,7 +48,7 @@ export class Leads extends Component {
 }
 
 const mapStateToProps = state => ({
-    // the first leads in line 18 can be named anythin you want
+    // the first leads in line   can be named anythin you want
     leads: state.leads.leads
     //state.leads means we want the leads reducer, while the last
     //leads is the part of the state dt we want which is also called
@@ -56,5 +56,5 @@ const mapStateToProps = state => ({
 });
 
 // export default Leads
-export default connect(mapStateToProps, { getLeads, deleteLead })
+export default connect(mapStateToProps, { getLeads, deleteLead, addLead })
 (Leads);

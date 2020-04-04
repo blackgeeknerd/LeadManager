@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import { addLead } from '../../actions/leads';  
 
 export class Form extends Component {
     //line 4 - 9 is to make each form   input a part of a state of a component
@@ -7,6 +10,10 @@ export class Form extends Component {
         email: '',
         message: ''
     }
+
+    static propTypes = {
+        addLead: PropTypes.func.isRequired
+    };
 
     onChange = e => this.setState({ [e.target.name] : e.target.value });
 
@@ -19,7 +26,15 @@ export class Form extends Component {
 
     onSubmit = e =>{
         e.preventDefault();
-        console.log('submit');
+        const { name, email, message } = this.state;
+        const lead = { name, email, message } 
+        this.props.addLead(lead); 
+        //empty the input after a user submits a valid form
+        this.setState({
+            name:'',
+            email:'',
+            message:''
+        });
     } 
  
     render() {
@@ -52,4 +67,4 @@ export class Form extends Component {
     }
 }
 
-export default Form
+export default connect(null, {addLead})(Form);

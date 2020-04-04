@@ -123,6 +123,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#Added line 127-130 for the remote local.settings file
+#which is needed on the remote server
 try:
     from .local_settings import *
 except ImportError:
