@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import { addLead } from '../../actions/leads';  
 
 export class Form extends Component {
-    //line 4 - 9 is to make each form   input a part of a state of a component
+    //line 4 - 9 is to make each form input a part of a state of a component
     state = {
         name: '',
         email: '',
@@ -29,6 +29,7 @@ export class Form extends Component {
         const { name, email, message } = this.state;
         const lead = { name, email, message } 
         this.props.addLead(lead); 
+
         //empty the input after a user submits a valid form
         this.setState({
             name:'',
